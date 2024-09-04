@@ -54,6 +54,54 @@
 ![image](https://github.com/user-attachments/assets/0108cd1f-2160-4057-b292-68a4f6265499)
 
 
+## Основная часть
+
+1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте значение, которое имеет факт `some_fact` для указанного хоста при выполнении playbook.
+
+![image](https://github.com/user-attachments/assets/ed5e525b-6828-4d60-9ce3-5f763e37475b)
+
+Выполнение команды ansible-playbook -i inventory/test.yml site.yml запускает Ansible playbook на окружении, описанном в файле inventory/test.yml. В результате выполнения playbook'а были выполнены следующие шаги:
+
+Gathering Facts: Ansible собирает факты (факты — это информация о хостах, такие как операционная система, IP-адрес, архитектура и т.д.).
+
+Print OS: Этот шаг выводит информацию об операционной системе хоста. В данном случае, значение "msg": "Ubuntu" указывает, что операционная система хоста — Ubuntu.
+
+Print fact: Этот шаг выводит значение переменной some_fact. В данном случае, значение "msg": 12 указывает, что переменная some_fact имеет значение 12.
+
+2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
+
+Файл group_vars/all/examp.yml
+
+![image](https://github.com/user-attachments/assets/853d28bf-9b84-4469-ad14-da2ebc17ea75)
+
+3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
+
+sudo apt update
+sudo apt install -y docker docker-compose-v2
+  
+![image](https://github.com/user-attachments/assets/f31467a1-a4dc-47d5-b3fa-bc4db78f59b3)
+
+
+![image](https://github.com/user-attachments/assets/dded015d-d93c-433e-b29c-994890cc8621)
+
+
+
+
+
+4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
+5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
+6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
+7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
+8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
+9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
+10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
+11. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь, что факты `some_fact` для каждого из хостов определены из верных `group_vars`.
+12. Заполните `README.md` ответами на вопросы. Сделайте `git push` в ветку `master`. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым `playbook` и заполненным `README.md`.
+13. Предоставьте скриншоты результатов запуска команд.
+
+
+
+
 
 
 
