@@ -200,6 +200,12 @@ Print fact: Выводит значение переменной some_fact. В �
 
 ![image](https://github.com/user-attachments/assets/14bd34e2-6041-403d-ad95-41a94d5731b8)
 
+
+* nano prod.yml
+
+![image](https://github.com/user-attachments/assets/17a3d477-dce6-45c5-ad0e-128a00960e7d)
+
+
 * ansible-playbook -i inventory/prod.yml site.yml --ask-vault-pass
 
 ![image](https://github.com/user-attachments/assets/ba52c970-2ed2-4752-8430-2e06a23dc8c7)
